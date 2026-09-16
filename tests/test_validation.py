@@ -30,8 +30,6 @@ def test_missing_account_id_is_rejected(validator: TransactionValidator, valid_r
     result = validator.validate(valid_raw_record)
     assert result.reason_code == ReasonCode.MISSING_ACCOUNT_ID
 
-def test_
-
 def test_from_record_to_transaction(validator: TransactionValidator, valid_raw_record: dict):
     result = validator.validate(valid_raw_record)
     assert isinstance(result, Transaction)

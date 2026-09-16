@@ -11,8 +11,12 @@ class TransactionValidator:
 
     def validate(self, raw: dict) -> DeadLetterRecord | Transaction:
         record = Record(**raw)
+        deadLetterRecordList = []
+        
 
         if not record.txn_id.strip():
+            deadLetterRecordObj =  DeadLetterRecord(ReasonCode.MISSING_TXN_ID, record, "txn_id is empty")
+            deadLetterRecordList.append(deadLetterRecordObj)
             return DeadLetterRecord(ReasonCode.MISSING_TXN_ID, record, "txn_id is empty")
 
         if not record.account_id.strip():

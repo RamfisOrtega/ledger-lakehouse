@@ -29,6 +29,14 @@ class ReasonCode(Enum):
     INVALID_CURRENCY    = "INVALID_CURRENCY"
     MISSING_RATE        = "MISSING_RATE"
 
+class ReasonCodeDetails(Enum):
+    MISSING_TXN_ID      = "Transaction ID is missing or empty."
+    MISSING_ACCOUNT_ID  = "Account ID is missing or empty."
+    INVALID_TIMESTAMP   = "Timestamp format is invalid or cannot be parsed."
+    INVALID_AMOUNT      = "Amount is not a valid decimal number."
+    INVALID_CURRENCY    = "Currency code is invalid or unsupported."
+    MISSING_RATE        = "Exchange rate for the given currency is missing."
+
 @dataclass
 class DeadLetterRecord:
     reason_code: ReasonCode
