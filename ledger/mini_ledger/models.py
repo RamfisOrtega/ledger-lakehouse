@@ -37,10 +37,16 @@ class ReasonCodeDetails(Enum):
     INVALID_CURRENCY    = "Currency code is invalid or unsupported."
     MISSING_RATE        = "Exchange rate for the given currency is missing."
 
+class AllowedCurrency(Enum):
+    USD = "USD"
+    CHF = "CHF"
+    EUR = "EUR"
+    GBP = "GBP"
+
 @dataclass
 class DeadLetterRecord:
     reason_code: ReasonCode
-    record : Record
-    detail: str | None = None
+    record: Record
+    detail: ReasonCodeDetails | None = None
 
 
